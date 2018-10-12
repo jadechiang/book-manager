@@ -1,0 +1,294 @@
+<div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改用户
+                </h4>
+            </div>
+            <div class="modal-body" style="margin-left: 50px">
+                <table cellspacing="10px" cellpadding="10px">
+                    <form class="form-inline" action="${context}/user/modify" method="post" id="modifyUserForm"
+                          onsubmit="return verify('modify')">
+                        <input type="hidden" id="userID" name="id">
+                        <tr>
+                            <td><h5>用户名 :</h5></td>
+                            <td><input type="text" required="required" name="username" class="form-control"
+                                       placeholder="请输入用户名"></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>性别 :</h5></td>
+                            <td><select role="select" name="gender" id="setGender" class="form-control">
+                                <option role="option" value="男" selected="selected">男</option>
+                                <option role="option" value="女">女</option>
+                            </select></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>电子邮箱 :</h5></td>
+                            <td><input class="form-control" type="text" id="modifyEmail" name="email"
+                                       placeholder="请输入电子邮箱"></td>
+                            <td><span style="color: orangered"
+                                      class="errorEmail"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>电话号码 :</h5></td>
+                            <td><input type="text" class="form-control" id="modifyPhone" name="telephone"
+                                       required="required" placeholder="请输入电话号码"></td>
+                            <td><span style="color: orangered"
+                                      class="errorPhone"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>出生年月 :</h5></td>
+                            <td><input required="required" type="text" class="form-control" name="birth" id="birthDay">
+                            <td><span style="color: orangered"
+                                      class="errorBirth"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>联系地址 :</h5></td>
+                            <td>
+                                <div id="modifyAddress"><select class="prov" required="required" name="province"
+                                                                style="width: 96px"></select>
+                                    <select class="city" disabled="disabled" name="city" style="width: 92px"></select>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <input form="modifyUserForm" type="submit" class="btn btn-default " value="修改">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="addModalLabel">
+                    添加用户
+                </h4>
+            </div>
+            <div class="modal-body" style="margin-left: 50px">
+                <table cellpadding="10px">
+                    <form class="form-inline" action="${context}/user/addUser" method="post" id="addUserForm"
+                          onsubmit="return verify('add')">
+                        <tr>
+                            <td><h5>用户名 :</h5></td>
+                            <td><input id="addUsername" required="required" type="text" name="username"
+                                       class="form-control" placeholder="请输入用户名"></td>
+                            <td><span id="errorUsername" style="color: orangered"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>性别 :</h5></td>
+                            <td><select role="select" name="gender" id="addGender" class="form-control">
+                                <option role="option" value="男" selected="selected">男</option>
+                                <option role="option" value="女">女</option>
+                            </select></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>电子邮箱 :</h5></td>
+                            <td><input class="form-control" type="text" id="addEmail" name="email" required="required"
+                                       placeholder="请输入电子邮箱"></td>
+                            <td><span style="color: orangered" class="errorEmail"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>电话号码 :</h5></td>
+                            <td><input type="text" class="form-control" id="addPhone" name="telephone"
+                                       required="required" placeholder="请输入电话号码"></td>
+                            <td><span style="color: orangered" class="errorPhone"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>出生年月 :</h5></td>
+                            <td><input type="text" class="form-control" id="addBirth" required="required" name="birth">
+                            <td><span style="color: orangered" class="errorBirth"></span></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>联系地址 :</h5></td>
+                            <td>
+                                <div id="addAddress"><select class="prov" required="required" name="province"
+                                                             style="width: 96px"></select><select class="city" disabled="disabled" name="city" style="width: 92px"></select>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <input form="addUserForm" class="btn btn-default" type="submit" value="添加">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="addBookModalLabel">
+                    添加图书
+                </h4>
+            </div>
+            <div class="modal-body" style="margin-left: 50px">
+                <table cellpadding="10px">
+                    <form class="form-inline" action="${context}/book/addBook" method="post" id="addBookForm">
+                        <tr>
+                            <td><h5>书名 :</h5></td>
+                            <td><input id="bookName" required="required" type="text" name="bookName"
+                                       class="form-control" placeholder="请输入图书名"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>作者 :</h5></td>
+                            <td><input class="form-control" type="text" id="bookAuthor" name="bookAuthor"
+                                       required="required" placeholder="请输入作者"></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>ISBN :</h5></td>
+                            <td><input type="text" class="form-control" id="ISBN" name="ISBN" required="required"
+                                       placeholder="请输入ISBN"></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>单价 :</h5></td>
+                            <td><input type="text" class="form-control" id="bookPrice" required="required"
+                                       name="bookPrice">
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>数量 :</h5></td>
+                            <td><input type="number" class="form-control" id="bookNumber" required="required"
+                                       name="bookNumber">
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>简介 :</h5></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="2" rowspan="4"><textarea class="form-control" id="introduction" name="introduction"   required="required"></textarea></td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <input form="addBookForm" class="btn btn-default" type="submit" value="添加">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modifyBookModal" tabindex="-1" role="dialog" aria-labelledby="modifyBookModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="modifyBookModalLabel">
+                    修改图书
+                </h4>
+            </div>
+            <div class="modal-body" style="margin-left: 50px">
+                <table cellpadding="10px">
+                    <form class="form-inline" action="${context}/book/modify" method="post" id="modifyBookForm">
+                        <input type="hidden" id="bookID">
+                        <tr>
+                            <td><h5>书名 :</h5></td>
+                            <td><input id="modifyName" required="required" type="text" name="modifyName"
+                                       class="form-control" placeholder="请输入图书名"></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>作者 :</h5></td>
+                            <td><input class="form-control" type="text" id="modifyAuthor" name="modifyAuthor"
+                                       required="required" placeholder="请输入作者"></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>ISBN :</h5></td>
+                            <td><input type="text" class="form-control" id="modifyISBN" name="modifyISBN"
+                                       required="required" placeholder="请输入ISBN"></td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>单价 :</h5></td>
+                            <td><input type="text" class="form-control" id="modifyPrice" required="required"
+                                       name="modifyPrice">
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>数量 :</h5></td>
+                            <td><input type="number" class="form-control" id="modifyNumber" required="required"
+                                       name="modifyNumber">
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><h5>简介 :</h5></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="2" rowspan="4"><textarea class="form-control" id="modifyIntro"
+                                                                  required="required"></textarea></td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <input form="modifyBookForm" class="btn btn-default" type="submit" value="修改">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationModal" tabindex="-1" role="dialog"
+     aria-labelledby="operationLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:1000px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="operationLabel">
+                    操作图书
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="well bordered-left bordered-themeprimary no-padding grid-body">
+                    <table id="grid_book_data"></table>
+                    <div id="grid_book_data_pager"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="closeOperation" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

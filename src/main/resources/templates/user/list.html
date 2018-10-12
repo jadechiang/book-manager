@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>图书管理系统</title>
+    <meta name="description" content="欢迎光临"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <#include "../common/plugin.html"/>
+    <link href="${static}/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="${static}/assets/css/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="${static}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/base.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/data_exchange.css" rel="stylesheet"/>
+    <script src="${static}/assets/js/jqgird/grid.locale-cn.js"></script>
+    <script src="${static}/assets/js/jqgird/jquery.jqGrid.min.js"></script>
+    <script src="${static}/assets/js/select2/select2.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="${static}/assets/js/syntaxhighlighter/styles/shCoreDefault.css"/>
+    <script src="${static}/js/my-define/borrow-book-list.js"></script>
+</head>
+<body>
+<#include "../common/loading.html"/>
+<#include "../common/navbar.html"/>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <#include "../common/sidebar.html"/>
+        <div class="page-content">
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="${context}/frame.html">首页</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        借阅中心
+                    </li>
+                </ul>
+            </div>
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>
+                        借阅详细
+                    </h1>
+                </div>
+            </div>
+            <div class="col-lg-12 ">
+                <div class="well bordered-left bordered-themeprimary no-padding grid-body">
+                    <table id="gridData"></table>
+                    <div id="gridPager"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${static}/assets/js/beyond.min.js"></script>
+</body>
+</html>

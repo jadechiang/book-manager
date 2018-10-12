@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>图书管理系统</title>
+    <meta name="description" content="欢迎光临"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <#include "common/plugin.html"/>
+    <link href="${static}/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="${static}/assets/css/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="${static}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/base.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/data_exchange.css" rel="stylesheet"/>
+    <script src="${static}/assets/js/jqgird/grid.locale-cn.js"></script>
+    <script src="${static}/assets/js/jqgird/jquery.jqGrid.min.js"></script>
+    <script src="${static}/assets/js/select2/select2.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="${static}/assets/js/syntaxhighlighter/styles/shCoreDefault.css"/>
+    <script src="${static}/js/my-define/all-book-list.js"></script>
+</head>
+<body>
+<#include "common/loading.html"/>
+<#include "common/navbar.html"/>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <#include "common/sidebar.html"/>
+        <div class="page-content">
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="${context}/frame.html">首页</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        <i class="fa fa-book"></i>
+                        <a href="${context}/user/listBook.html">借阅中心</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        <i class="fa fa-comment"></i>
+                        <a  href="${context}/book/messageIndex.html">留言板</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        <i class="fa fa-cog"></i>
+                        <a href="${context}/user/userInfo.html">个人信息</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-body ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bordered-left bordered-themeprimary ">
+                            <div class="row" align="center">
+                                <h4 style="color: deepskyblue">图书管理系统</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="color: #0a2b1d">
+                                    <div>
+                                        <!--<img src="${static}/image/logo.png">-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">&nbsp;</div>
+                            <div role="form" class="form-inline">
+                                <div class="form-group" style="width: 18%">
+                                    <label for="name">
+                                        书名：
+                                    </label>
+                                    <input type="text" id="name" style="width: 65%;" class="input-xlarge"/>
+                                </div>
+                                <div class="form-group" style="width: 20%">
+                                    <label for="author">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b></b>作者：
+                                    </label>
+                                    <input type="hidden" id="author" style="width: 40%;"
+                                           class="input-xlarge"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="isbn">
+                                        ISBN：
+                                    </label>
+                                    <input type="text" id="isbn" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态：
+                                    </label>
+                                    <select role="select" name="status" id="status"
+                                            class="form-control">
+                                        <option role="option" value="" selected="selected">
+                                            全部
+                                        </option>
+                                        <option role="option" value="F" class='label label-success'>
+                                            未借阅
+                                        </option>
+                                        <option role="option" value="T" class='label label-warning'>
+                                            已借阅
+                                        </option>
+                                    </select>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-success" type="button" id="search">
+                                    查询
+                                </button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-info" type="button" id="clear">
+                                    清空
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 ">
+                        <div class="well bordered-left bordered-themeprimary no-padding grid-body">
+                            <table id="grid_data"></table>
+                            <div id="grid_data_pager"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${static}/assets/js/beyond.min.js"></script>
+</body>
+</html>

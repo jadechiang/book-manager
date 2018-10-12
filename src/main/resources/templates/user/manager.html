@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>图书管理系统</title>
+    <meta name="description" content="欢迎光临"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <#include "../common/plugin.html"/>
+    <link href="${static}/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="${static}/assets/css/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="${static}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/base.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/data_exchange.css" rel="stylesheet"/>
+    <script src="${static}/assets/js/city.min.js"></script>
+    <script src="${static}/assets/js/jquery.cityselect.js"></script>
+    <script src="${static}/assets/js/jqgird/grid.locale-cn.js"></script>
+    <script src="${static}/assets/js/jqgird/jquery.jqGrid.min.js"></script>
+    <script src="${static}/assets/js/select2/select2.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="${static}/assets/js/syntaxhighlighter/styles/shCoreDefault.css"/>
+    <script src="${static}/js/my-define/manager.js"></script>
+</head>
+<body>
+<#include "../common/loading.html"/>
+<#include "../common/navbar.html"/>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <#include "../common/sidebar.html"/>
+        <div class="page-content">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" style="text-decoration: none"
+                               href="#manageUser">
+                                <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;
+                                <font style="color: darkblue">用户管理</font>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="manageUser" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="col-lg-12">
+                                <button onclick="addModal('user')" class='btn btn-info btn-xs'>添加用户</button>
+                            </div>
+                            <div class="col-lg-12 ">&nbsp;</div>
+                            <div class="col-lg-12 ">
+                                <div class="well bordered-left bordered-themeprimary no-padding grid-body">
+                                    <table id="grid_user_data"></table>
+                                    <div id="grid_user_data_pager"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" style="text-decoration: none"
+                               href="#manageBook">
+                                <i class="fa fa-book"> </i>&nbsp;&nbsp;
+                                <font style="color: darkblue">图书管理</font>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="manageBook" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <button onclick="addModal('addBook')" class='btn btn-info btn-xs'>添加图书</button>
+                            <button onclick="addModal('operation')" class='btn btn-info btn-xs'>操作图书</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" style="text-decoration: none"
+                               href="#systemOperaction">
+                                <i class="fa fa-th-list"> </i>&nbsp;&nbsp;
+                                <font style="color: darkblue">系统操作</font>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="systemOperaction" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <!--<a href="${context}/user/sendEmail" class='btn btn-info btn-xs'>留言板管理</a>-->
+                            <!--<a href="${context}/user/sendEmail.html" class='btn btn-info btn-xs'>通知管理员</a>-->
+                            <a href="${context}/logout" class='btn btn-info btn-xs'>退出系统</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<#include "modal.html"/>
+</body>
+<script src="${static}/assets/js/beyond.min.js"></script>
+</body>
+</html>

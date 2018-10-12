@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>图书管理系统</title>
+    <meta name="description" content="欢迎光临"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <#include "../common/plugin.html"/>
+    <link href="${static}/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="${static}/assets/css/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="${static}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/base.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/autoEmail.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/data_exchange.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <script src="${static}/assets/js/jqgird/grid.locale-cn.js"></script>
+    <script src="${static}/assets/js/jqgird/jquery.jqGrid.min.js"></script>
+    <script src="${static}/assets/js/select2/select2.js"></script>
+    <script src="${static}/assets/js/city.min.js"></script>
+    <script src="${static}/assets/js/jquery.cityselect.js"></script>
+    <script src="${static}/assets/js/datetime/bootstrap-datetimepicker.min.js"></script>
+    <script src="${static}/assets/js/datetime/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="${static}/assets/js/syntaxhighlighter/styles/shCoreDefault.css"/>
+    <script src="${static}/js/my-define/formVerify.js"></script>
+    <script src="${static}/js/my-define/emailAutoComplete.js"></script>
+</head>
+<body>
+<#include "../common/loading.html"/>
+<#include "../common/navbar.html"/>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <#include "../common/sidebar.html"/>
+        <div class="page-content">
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="${context}/frame.html">首页</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        <a href="${context}/user/userInfo.html">个人中心</a>
+                    </li>
+                    <li>
+                        个人信息
+                    </li>
+                </ul>
+            </div>
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>
+                        信息修改
+                    </h1>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="col-sm-12" align="center">
+                    <form method="post" action="${context}/user/updateSetting" onsubmit="return verify()">
+                        <table class="table table-striped">
+                            <caption><h4>用户名 : <b style="color: lightseagreen">${setUser.username}</b></h4></caption>
+                            <tbody>
+                            <tr>
+                                <td class="col-sm-1"><h5>邮箱 :</h5></td>
+                                <td class="col-sm-3" id="emailSet"><input id="setEmail" type="text" class="form-control" name="email"
+                                                            required="required" value="${setUser.email}"></td>
+                                <td class="col-sm-2"><span id="errEmail" style="font-size:14px;color:orangered;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><h5>电话 :</h5></td>
+                                <td><input id="setTelephone" type="text" class="form-control" name="telephone"
+                                           required="required" value="${setUser.telephone}"></td>
+                                <td><span id="errTelephone" style=" font-size:14px;color:orangered;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><h5>出生年月 :</h5></td>
+                                <td><input type="text" id="birthDate" name="birth" class="form-control"
+                                           value="${setUser.birth}"></td>
+                                <td><span id="errBirth" style="font-size:14px;color:orangered;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><h5>地址 :</h5></td>
+                                <td><span id="setAddress">
+                                        <select class="prov" required="required" name="province"></select>
+                                        <select class="city" disabled="disabled" name="city"></select>
+                                    </span>
+                                </td>
+                                <td><span id="errAddress" style="font-size:14px;color:orangered;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><h5>性别 :</h5></td>
+                                <td>
+                                    <select role="select" name="gender" id="setGender" class="form-control">
+                                        <option role="option" value="男" selected="selected">男</option>
+                                        <option role="option" value="女">女</option>
+                                    </select>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h5>个性签名 :</h5></td>
+                                <td><textarea class="form-control" name="signature">${setUser.signature}</textarea></td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td><h5><input class="btn btn-info" type="submit" value="确定">&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-default" href="${context}/user/userInfo.html">返回</a></h5></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${static}/assets/js/beyond.min.js"></script>
+</body>
+</html>

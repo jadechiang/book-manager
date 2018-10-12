@@ -1,0 +1,200 @@
+@charset "utf-8";
+/* CSS Document */
+
+.center_block {
+    background: #ffe88a none repeat scroll 0 0;
+    height: 100px;
+    margin-top: 200px;
+    position: relative;
+    width: 100%;
+}
+
+.blo_title {
+    font-size: 24px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.branch {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.branch_up {
+    bottom: 100px;
+    height: 200px;
+}
+
+.branch_down {
+    top: 100px;
+    height: 200px;
+}
+
+.branch_p {
+    line-height: 20px;
+}
+
+.icon_line_up {
+    background: url(../image/line.png) scroll no-repeat 0 0;
+    bottom: -60px;
+    display: block;
+    height: 60px;
+    left: 68px;
+    position: absolute;
+    width: 4px;
+}
+
+.icon_line_down {
+    background: url(../image/line.png) scroll no-repeat 0 0;
+    bottom: 140px;
+    display: block;
+    height: 60px;
+    left: 68px;
+    position: absolute;
+    width: 4px;
+}
+
+.bran {
+    background: #f7f7f7 none repeat scroll 0 0;
+    display: inline-block;
+    height: 140px;
+    margin: 0 20px;
+    position: relative;
+    text-align: center;
+    width: 140px;
+    cursor: pointer;
+}
+
+.branch_down > div {
+    margin-top: 60px;
+}
+
+.light_box {
+    height: 40px;
+}
+
+.light_box > img {
+    height: 100%;
+    vertical-align: top;
+}
+
+.link {
+    background: #ededed none repeat scroll 0 0;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 220px;
+    text-align: center;
+    width: 100px;
+}
+
+.icon_blueArrowUp {
+    background: url(../image/blue_arrow_up.png) scroll 0 0;
+    bottom: -60px;
+    display: block;
+    height: 24px;
+    left: 58px;
+    position: absolute;
+    width: 24px;
+}
+
+.icon_greenArrowDown {
+    background: url(../image/green_arrow_down.png) scroll 0 0;
+    bottom: -23px;
+    display: block;
+    height: 24px;
+    left: 58px;
+    position: absolute;
+    width: 24px;
+}
+
+.icon_blueArrowDown {
+    background: url(../image/blue_arrow_down.png) scroll 0 0;
+    bottom: 176px;
+    display: block;
+    height: 24px;
+    left: 58px;
+    position: absolute;
+    width: 24px;
+}
+
+.icon_greenArrowUp {
+    background: url(../image/green_arrow_up.png) scroll 0 0;
+    bottom: 140px;
+    display: block;
+    height: 24px;
+    left: 58px;
+    position: absolute;
+    width: 24px;
+}
+
+.purpleBg {
+    background: #e8d7eb none repeat scroll 0 0 !important;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.fl {
+    float: left;
+}
+
+.pL select {
+    height: 25px;
+    margin: 10px 10px 0;
+    width: 70px;
+}
+
+.pL {
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.pR {
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.icon_red {
+    background: url(../image/traffic.png) scroll no-repeat -2px -8px;
+    width: 27px;
+    height: 24px;
+    display: inline-block;
+    margin-bottom: -5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.icon_yellow {
+    background: url(../image/traffic.png) scroll no-repeat -28px -8px;
+    width: 27px;
+    height: 24px;
+    display: inline-block;
+    margin-bottom: -5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.icon_green {
+    background: url(../image/traffic.png) scroll no-repeat -55px -8px;
+    width: 27px;
+    height: 24px;
+    display: inline-block;
+    margin-bottom: -5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.icon_clock {
+    background: url(../image/clock.png) scroll no-repeat 0 0;
+    width: 130px;
+    height: 130px;
+    display: block;
+    position: absolute;
+    bottom: -17px;
+    right: -49px;
+    cursor: pointer;
+}

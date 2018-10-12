@@ -1,0 +1,12 @@
+[
+<#if authors??>
+    {"id":"","text":"全部"},
+    <#list authors as author>
+
+        {"id":"${author}",
+        "text":"${author}"
+        }
+        <#if author_has_next>,</#if>
+    </#list>
+</#if>
+]

@@ -1,0 +1,45 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="javascript:void(0);" class="navbar-brand">
+                    <small>
+                    </small>
+                </a>
+            </div>
+
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <ul class="account-area">
+                        <li>
+                            <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                <div class="avatar" title="View your public profile">
+                                    <img src="${static}/assets/img/avatars/sword.jpg">
+                                </div>
+                                <section>
+                                    <h2><span class="profile"><span>${user.username}</span></span></h2>
+                                </section>
+                            </a>
+                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                <li class="username"><a>${user.username}</a></li>
+                                <li class="email"><a>${user.email}</a></li>
+                                <li class="email"><a>${user.address}</a></li>
+                                <li>
+                                    <div class="avatar-area">
+                                        <img src="${static}/assets/img/avatars/sword.jpg" class="avatar">
+                                    </div>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <a href="${context}/logout">
+                                        注销
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<#include "dialog.html"/>

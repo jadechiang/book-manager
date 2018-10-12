@@ -1,0 +1,19 @@
+{"numPerPage":${pageBean.numPerPage},
+"pageCount":${pageBean.pageCount},
+"beginPageIndex":${pageBean.beginPageIndex},
+"endPageIndex":${pageBean.endPageIndex},
+"totalCount":${pageBean.totalCount},
+"currentPage":${pageBean.currentPage},
+"recordList":[
+<#if pageBean.recordList ??>
+    <#list pageBean.recordList  as message>
+        {"id":"${message.id}",
+        "deleted":"${message.deleted}",
+        "createTime":"${message.createTime}",
+        "page":"${message.page}",
+        "rows":"${message.rows}",
+        "content":"${message.content}",
+        "username":"${message.username}"}
+        <#if message_has_next>,</#if>
+    </#list>
+</#if>]}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ealen.bookmanager.mapper.LeaveMessageMapper">
+    <resultMap id="BaseResultMap" type="ealen.bookmanager.model.LeaveMessage">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="reply" property="reply" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="deleted" property="deleted" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="condition_sql">
+        <!-- 查询条件 -->
+        <if test="deleted == 'true' || deleted == 'false'">
+            <![CDATA[AND m.deleted = #{deleted} ]]>
+        </if>
+    </sql>
+    <select id="getAllMessage" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select * from t_message m
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+        ORDER BY m.id DESC
+    </select>
+
+    <insert id="addInformation" parameterType="ealen.bookmanager.model.LeaveMessage">
+      insert into t_message(username,content,create_time,deleted) values(#{username},#{content},#{createTime},'false')
+    </insert>
+</mapper>

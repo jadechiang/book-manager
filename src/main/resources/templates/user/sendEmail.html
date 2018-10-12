@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>图书管理系统</title>
+    <meta name="description" content="欢迎光临"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <#include "../common/plugin.html"/>
+    <link href="${static}/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="${static}/assets/css/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="${static}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/base.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/data_exchange.css" rel="stylesheet"/>
+    <script src="${static}/assets/js/city.min.js"></script>
+    <script src="${static}/assets/js/jquery.cityselect.js"></script>
+    <script src="${static}/assets/js/jqgird/grid.locale-cn.js"></script>
+    <script src="${static}/assets/js/jqgird/jquery.jqGrid.min.js"></script>
+    <script src="${static}/assets/js/select2/select2.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="${static}/assets/js/syntaxhighlighter/styles/shCoreDefault.css"/>
+</head>
+<body>
+<#include "../common/loading.html"/>
+<#include "../common/navbar.html"/>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <#include "../common/sidebar.html"/>
+        <div class="page-content">
+            <br><br>
+            <div align="center">
+                <h4 style="color:orangered;">填写信息发送给系统管理员EalenXie</h4>
+            </div>
+            <div class="page-body">
+                <form id="sendMessage" enctype="multipart/form-data" method="post" class="form-horizontal" role="form"
+                      action="${context}/user/sendMessage">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="emailTitle" class="col-sm-2 control-label">主题</label>
+                            <div class="col-sm-4">
+                                <input id="emailTitle" name="emailTitle" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="emailContent" class="col-sm-2 control-label">内容</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="emailContent" name="emailContent"
+                                          placeholder="请输入邮件内容"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="emailAttachment" class="col-sm-2 control-label">上传附件</label>
+                            <div class="col-sm-2">
+                                <input id="emailAttachment" name="emailAttachment" type="file" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">&nbsp;</div>
+                <div class="row" style="margin-left: 180px">
+                    <div class="col-sm-1 control-label">
+                        <input class="btn btn-default" type="submit" form="sendMessage" value="发送">
+                    </div>
+                    <div class="col-sm-1 control-label">
+                        <a href="${context}/user/manager.html" class="btn btn-default">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${static}/assets/js/beyond.min.js"></script>
+</body>
+</html>

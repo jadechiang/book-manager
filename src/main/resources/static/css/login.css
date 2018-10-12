@@ -1,0 +1,27 @@
+.loginbox-info {
+    padding: 10px 40px;
+}
+
+body::before {
+    background-color: #1d8bd8;
+    background: linear-gradient(#0f64a5, #1d8bd8);
+}
+
+.footFix {
+    background-color: #0f64a5;
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    line-height: 30px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+.login-container .loginbox {
+    height: 340px !important;
+}
+
+.well {
+    margin-bottom: 0px #0072c6 !important;
+}

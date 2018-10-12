@@ -1,0 +1,24 @@
+{
+"total": ${pageInfo.pages},
+"page": ${pageInfo.pageNum},
+"records":${pageInfo.total},
+"rows": [
+<#if pageInfo.list ??>
+    <#list pageInfo.list as book>
+        {
+        "id": "${book.id}",
+        "cell": [
+        "${book.id}",
+        "${book.name?if_exists}",
+        "${book.author?if_exists}",
+        "${book.price?if_exists}",
+        "${book.isbn?if_exists}",
+        "",
+        ""
+        ]
+        }
+        <#if book_has_next>,</#if>
+    </#list>
+</#if>
+]
+}

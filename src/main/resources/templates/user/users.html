@@ -1,0 +1,26 @@
+{
+"total": ${pageInfo.pages},
+"page": ${pageInfo.pageNum},
+"records":${pageInfo.total},
+"rows": [
+<#if pageInfo.list ??>
+    <#list pageInfo.list as safeUser>
+        {
+        "id": "${safeUser.id}",
+        "cell": [
+        "${safeUser.id}}",
+        "${safeUser.username?if_exists}",
+        "${safeUser.gender?if_exists}",
+        "${safeUser.birth?if_exists}",
+        "${safeUser.email?if_exists}",
+        "${safeUser.telephone?if_exists}",
+        "${safeUser.address?if_exists}",
+        "${safeUser.role?if_exists}",
+        ""
+        ]
+        }
+        <#if safeUser_has_next>,</#if>
+    </#list>
+</#if>
+]
+}

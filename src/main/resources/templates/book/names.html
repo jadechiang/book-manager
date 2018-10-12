@@ -1,0 +1,10 @@
+[
+<#if names??>
+    {"id":"","text":"全部"},
+    <#list names as name>
+        {"id":"${name}",
+        "text":"${name}"}
+        <#if name_has_next>,</#if>
+    </#list>
+</#if>
+]

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <cfheader name="X-XSS-Protection" value="0"/>
+    <meta http-equiv="X-XSS-Protection" content="0"/>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>图书管理系统</title>
+    <#include "../common/plugin.html"/>
+    <link href="${static}/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="${static}/assets/css/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="${static}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/base.css" rel="stylesheet"/>
+    <link type="text/css" href="${static}/css/data_exchange.css" rel="stylesheet"/>
+    <script src="${static}/assets/js/jqgird/grid.locale-cn.js"></script>
+    <script src="${static}/assets/js/jqgird/jquery.jqGrid.min.js"></script>
+    <script src="${static}/assets/js/select2/select2.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="${static}/assets/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="${static}/assets/js/syntaxhighlighter/styles/shCoreDefault.css"/>
+    <script src="${static}/js/common/vue.min.js"></script>
+    <script src="${static}/js/common/vue-resource.js"></script>
+    <script src="${static}/js/my-define/leaveMessage.js"></script>
+</head>
+<body>
+<#include "../common/loading.html"/>
+<#include "../common/navbar.html"/>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <#include "../common/sidebar.html"/>
+        <div class="page-content">
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="${context}/frame.html">首页</a>
+                    </li>
+                    &nbsp;
+                    <li>
+                        留言板
+                    </li>
+                </ul>
+            </div>
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>
+                        留言信息
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="container body" id="app">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="col-md-10 col-sm-10 col-xs-10">
+                        <div>
+                            <button onclick="leaveMessageForm()" class="btn btn-default ">添加留言</button>
+                            <br>
+                            <div id="leaveMessageBox">
+                            </div>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <tr class="even pointer" v-for="message in messages">
+                                    <div v-for="message in messages">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h5 class=""><b class="text-success">{{message.username}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发表于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+                                                        class="text-muted" style="font-size: 14px;font-family: 微软雅黑">{{message.createTime}}
+                                                    :</font></h5>
+                                            </div>
+                                            <div class="panel-body" style="word-break:break-all">
+                                                <font class="text-muted" style="font-size: 14px">&nbsp;&nbsp;&nbsp;{{message.content}}</font>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <nav>
+                                        <h5><span class="pagination" style="float: left">共<font class="text-muted">{{pageBean.totalCount}}</font>条记录,共<font
+                                                class="text-muted">{{pageBean.pageCount}}</font>页，每页<font
+                                                class="text-muted">{{pageBean.numPerPage}}</font>条</span>
+                                        </h5>
+                                        <ul class="pagination" style="float: right">
+                                            <li><a aria-label="Previous" onclick="getNext('begin');" href="#"> <span
+                                                    aria-hidden="true">首页</span> </a></li>
+                                            <li><a aria-label="Previous" onclick="nextTable('up');" href="#"> <span
+                                                    aria-hidden="true">«</span> </a></li>
+                                            <li><a>{{pageBean.currentPage}}</a></li>
+                                            <li><a aria-label="Next" onclick="nextTable('down');" href="#"> <span
+                                                    aria-hidden="true">»</span> </a></li>
+                                            <li><a aria-label="Previous" onclick="getNext('end');" href="#"> <span
+                                                    aria-hidden="true">尾页</span> </a></li>
+                                        </ul>
+                                    </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${static}/assets/js/beyond.min.js"></script>
+</body>
+<script th:inline="javascript">
+    /**
+     * #Created with IntelliJ IDEA
+     * #Author : EalenXie
+     * #CreateTime : 2017-05-10 10:49
+     */
+    var vm = new Vue({
+        el: "body",
+        data: {
+            id: 0, pageBean: null, messages: null,
+            username: null, content: null, reply: null,
+            createTime: null, deleted: null
+        },
+    });
+    jQuery(document).ready(function () {
+        vm.$http.post(context + "/book/message/json", {}).then(function (response) {
+            vm.$data.pageBean = JSON.parse((response.bodyText));
+            vm.$data.messages = vm.$data.pageBean.recordList;
+        }, function (response) {
+        });
+
+    });
+    function nvNullMessage() {
+        var model = vm.$data;
+        model.username = null;
+        model.content = null;
+        model.reply = null;
+    }
+
+    function nvnull() {
+        vm.$data.messages = null;
+        vm.$data.pageBean = null;
+    }
+
+
+    function getNext(str) {
+        if (vm.$data.pageBean.totalCount == 0) {
+            return false;
+        }
+        //首页
+        if ('begin' == str) {
+            if (vm.$data.pageBean.beginPageIndex == vm.$data.pageBean.currentPage) {
+                return false;
+            } else {
+                vm.$http.get(context + "/book/message/nextPage?pageNum=" + vm.$data.pageBean.beginPageIndex + "&amp;numPerPage=" + vm.$data.pageBean.numPerPage).then(function (response) {
+                    nvnull();
+                    vm.$data.pageBean = JSON.parse((response.bodyText));
+                    vm.$data.messages = vm.$data.pageBean.recordList;
+                });
+            }
+        } else if ('end' == str) {
+            //尾页
+            if (vm.$data.pageBean.endPageIndex == vm.$data.pageBean.currentPage) {
+                return false;
+            } else {
+                vm.$http.get(context + "/book/message/nextPage?pageNum=" + vm.$data.pageBean.endPageIndex + "&amp;numPerPage=" + vm.$data.pageBean.numPerPage).then(function (response) {
+                    nvnull();
+                    vm.$data.pageBean = JSON.parse((response.bodyText));
+                    vm.$data.messages = vm.$data.pageBean.recordList;
+                });
+            }
+        }
+    }
+
+    function nextTable(str) {
+        if (vm.$data.pageBean.totalCount == 0) {
+            return false;
+        }
+        //上一页
+        if ('up' == str) {
+            //等于当前页
+            if (vm.$data.pageBean.beginPageIndex == vm.$data.pageBean.currentPage) {
+                return false;
+            } else {
+                var numUp = vm.$data.pageBean.currentPage - 1;
+                vm.$http.get(context + "/book/message/nextPage?pageNum=" + numUp + "&amp;numPerPage=" + vm.$data.pageBean.numPerPage).then(function (response) {
+                    nvnull();
+                    vm.$data.pageBean = JSON.parse((response.bodyText));
+                    vm.$data.messages = vm.$data.pageBean.recordList;
+                });
+            }
+        } else {
+            //下一页
+            //等于当前页
+            if (vm.$data.pageBean.endPageIndex == vm.$data.pageBean.currentPage) {
+                return false;
+            } else {
+                var numDown = vm.$data.pageBean.currentPage + 1;
+                vm.$http.get(context + "/book/message/nextPage?pageNum=" + numDown + "&amp;numPerPage=" + vm.$data.pageBean.numPerPage).then(function (response) {
+                    nvnull();
+                    vm.$data.pageBean = JSON.parse((response.bodyText));
+                    vm.$data.messages = vm.$data.pageBean.recordList;
+                });
+            }
+        }
+    }
+
+    //刷新表格
+    function refresh() {
+        vm.$http.get(context + "/book/message/nextPage?pageNum=" + vm.$data.pageBean.currentPage + "&amp;numPerPage=" + vm.$data.pageBean.numPerPage).then(function (response) {
+            nvnull();
+            vm.$data.pageBean = JSON.parse((response.bodyText));
+            vm.$data.messages = vm.$data.pageBean.recordList;
+        });
+    }
+
+</script>
+</html>
